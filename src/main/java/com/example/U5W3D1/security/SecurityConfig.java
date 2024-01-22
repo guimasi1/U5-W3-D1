@@ -18,13 +18,16 @@ public class SecurityConfig {
     private JWTAuthFilter jwtAuthFilter;
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        http.formLogin(AbstractHttpConfigurer::disable);
-        http.sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-        http.csrf(AbstractHttpConfigurer::disable);
-        http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-        http.authorizeHttpRequests(r-> r.requestMatchers("/**").permitAll());
-        return http.build();
+    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.formLogin(AbstractHttpConfigurer::disable);
+        httpSecurity.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        httpSecurity.csrf(AbstractHttpConfigurer::disable);
+
+        httpSecurity.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
+        httpSecurity.authorizeHttpRequests(request -> request.requestMatchers("/**").permitAll());
+
+        return httpSecurity.build();
     }
 
 }

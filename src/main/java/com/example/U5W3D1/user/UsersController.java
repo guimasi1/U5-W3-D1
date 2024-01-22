@@ -33,7 +33,7 @@ public class UsersController {
         return usersService.getUsers(name, surname, page, size, id);
     }
 
-   /* @PostMapping
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UsersResponseDTO create(@RequestBody @Validated NewUserDTO user, BindingResult validation, @Value("${mail.from}") String mailFrom) {
         if(validation.hasErrors()) {
@@ -44,7 +44,7 @@ public class UsersController {
             mailgunSender.sendMail(newUser.getEmail(),mailFrom);
             return new UsersResponseDTO(newUser.getId());
         }
-    }*/
+    }
 
     @PutMapping("/{uuid}")
     public User updateById(@PathVariable UUID uuid, @RequestBody User body) {

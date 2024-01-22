@@ -27,6 +27,7 @@ public class AuthController {
         return new UserLoginResponseDTO(token);
     }
 
+
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public UsersResponseDTO createUser(@RequestBody @Validated NewUserDTO newUserPayload, BindingResult validation) {

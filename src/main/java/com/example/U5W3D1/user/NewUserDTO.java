@@ -24,6 +24,7 @@ public record NewUserDTO(
         @NotEmpty(message = "Inserire l'url dell'avatar")
         String avatarUrl,
         @NotEmpty(message = "Inserire la password")
+        @Size(min = 3, max = 40, message = "La psw deve essere di minimo 3 caratteri e massimo 40.")
         String password
 ) {
 

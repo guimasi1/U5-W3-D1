@@ -31,6 +31,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Device> deviceList;
     private String avatarUrl;
+    @Getter
     private String password;
 
     public User(String username, String name, String surname, String email, String avatarUrl) {
@@ -39,5 +40,14 @@ public class User {
         this.surname = surname;
         this.email = email;
         this.avatarUrl = avatarUrl;
+    }
+
+    public User(String username, String name, String surname, String email, String avatarUrl, String password) {
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.avatarUrl = avatarUrl;
+        this.password = password;
     }
 }

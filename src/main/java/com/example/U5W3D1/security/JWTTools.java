@@ -11,7 +11,8 @@ import java.util.Date;
 
 @Component
 public class JWTTools {
-    @Value("{spring.jwt.secret}")
+
+    @Value("${spring.jwt.secret}")
     private String secret;
 
     public String createToken(User user) {

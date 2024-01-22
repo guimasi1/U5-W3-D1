@@ -43,6 +43,7 @@ public class UsersService {
         newUser.setName(user.name());
         newUser.setEmail(user.email());
         newUser.setAvatarUrl("https://ui-avatars.com/api/?name=" + user.name() + "+" + user.surname());
+        newUser.setPassword(user.password());
         return usersDAO.save(newUser);
     }
 
@@ -91,6 +92,7 @@ public class UsersService {
     }
 
     public User findByEmail(String email) throws NotFoundException {
+        System.out.println(usersDAO.findByEmail(email));
         return usersDAO.findByEmail(email).orElseThrow(() -> new NotFoundException("Utente con email " + email + " non trovata!"));
     }
 
